@@ -1,13 +1,28 @@
-#include<stdio.h>
+#include <stdio.h>
+
 int main() {
-    char ch;
-    printf("enter a character :");
-    scanf("%c", &ch);
-    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ||
-    ch == 'A' || ch == 'E' || ch == 'O' || ch == 'I' || ch == 'U') {
-        printf("vowel\n");
-    } else {
-        printf("consonant\n");
-     }
-       return 0;
+    int n, i, j;
+    int isIdentity = 1;
+
+    scanf("%d", &n);
+
+    int matrix[n][n];
+
+    for(i = 0; i < n; i++) {
+        for(j = 0; j < n; j++) {
+            scanf("%d", &matrix[i][j]);
+
+            if (i == j && matrix[i][j] != 1)
+                isIdentity = 0;
+            else if (i != j && matrix[i][j] != 0)
+                isIdentity = 0;
+        }
     }
+
+    if (isIdentity)
+        printf("Identity Matrix");
+    else
+        printf("Not an Identity Matrix");
+
+    return 0;
+}
